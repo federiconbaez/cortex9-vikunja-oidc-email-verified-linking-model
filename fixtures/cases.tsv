@@ -1,0 +1,9 @@
+id	kind	description
+p01_unverified_email_fallback	pos	EmailFallback + email_verified=false + victim email (GHSA test)
+p02_missing_verified_claim	pos	EmailFallback + email_verified default false (absent claim)
+p03_string_false	pos	email_verified JSON string 'false' (boolish)
+n01_verified_true	neg	email_verified=true links under both (GHSA positive control)
+n02_string_true	neg	email_verified JSON string 'true'
+n03_fallback_disabled	neg	EmailFallback=false: no email-only search
+n04_empty_email	neg	empty email cannot link
+n05_unknown_email_verified	neg	verified email of a non-existent user → NEW under both

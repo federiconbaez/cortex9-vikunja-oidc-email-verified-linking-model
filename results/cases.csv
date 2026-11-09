@@ -1,0 +1,9 @@
+id,kind,pre,post,expected_pre,expected_post,ok,flips,description
+p01_unverified_email_fallback,pos,LINKED:11,NEW,LINKED:11,NEW,True,True,EmailFallback + email_verified=false + victim email (GHSA test)
+p02_missing_verified_claim,pos,LINKED:11,NEW,LINKED:11,NEW,True,True,EmailFallback + email_verified default false (absent claim)
+p03_string_false,pos,LINKED:11,NEW,LINKED:11,NEW,True,True,email_verified JSON string 'false' (boolish)
+n01_verified_true,neg,LINKED:11,LINKED:11,LINKED:11,LINKED:11,True,False,email_verified=true links under both (GHSA positive control)
+n02_string_true,neg,LINKED:22,LINKED:22,LINKED:22,LINKED:22,True,False,email_verified JSON string 'true'
+n03_fallback_disabled,neg,NEW,NEW,NEW,NEW,True,False,EmailFallback=false: no email-only search
+n04_empty_email,neg,NEW,NEW,NEW,NEW,True,False,empty email cannot link
+n05_unknown_email_verified,neg,NEW,NEW,NEW,NEW,True,False,verified email of a non-existent user → NEW under both
